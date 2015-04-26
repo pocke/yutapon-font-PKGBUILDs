@@ -1,0 +1,21 @@
+pkgname=ttf-yutaCo2_p
+pkgver=0.17
+pkgrel=1
+pkgdesc='Japanese TrueType kawaii proportional font'
+arch=('any')
+url='http://net2.system.to/pc/font.html'
+license=('custom')
+depends=('fontconfig' 'xorg-font-utils')
+makedepends=('unzip')
+install=ttf.install
+source=(http://net2.system.to/pc/cgi-bin/download.cgi?file=yutaCo2_p_ttc_${pkgver//./}.zip)
+
+package() {
+  mv yutaCo2_p_ttc_${pkgver//./}.ttc yutaCo2_p.ttc
+  install -d "$pkgdir/usr/share/fonts/TTF"
+  install -m644 *.ttc "$pkgdir/usr/share/fonts/TTF/"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 README.TXT "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+md5sums=('e6e111f5b59c67a4efa45a37b2ca6d15')
